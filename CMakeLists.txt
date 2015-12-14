@@ -57,7 +57,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-   INCLUDE_DIRS include
+#   INCLUDE_DIRS include
 #  LIBRARIES iwaki
    CATKIN_DEPENDS message_runtime roscpp rospy std_msgs
 #  DEPENDS system_lib
@@ -68,8 +68,13 @@ catkin_package(
 ###########
 
 ## custom for iwaki
-set(RE2_LIBRARY "/usr/local/lib/libre2.a")
-set(RE2_INCLUDE_PATH "/usr/local/include/re2")
+#set(RE2_LIBRARY "/usr/local/lib/libre2.a")
+#set(RE2_INCLUDE_PATH "/usr/local/include/re2")
+set(RE2_LIBRARY "$ENV{HOME}/usr/lib/libre2.a")
+set(RE2_INCLUDE_PATH "$ENV{HOME}/usr/include/re2")
+set(IWAKI_LIBRARY "$ENV{HOME}/usr/lib/libiwaki.a")
+set(QUEUEIO_LIBRARY "$ENV{HOME}/usr/lib/libqueueio.a")
+
 find_package (Threads)
 
 set(CURSES_USE_NCURSES TRUE)
@@ -82,7 +87,8 @@ include_directories(include
 )
 
 add_executable(iwakishi src/iwakishi.cpp src/text_ui.cpp)
-target_link_libraries(iwakishi ${catkin_LIBRARIES} iwaki queueio ${RE2_LIBRARY} ${CURSES_LIBRARY})
+#target_link_libraries(iwakishi ${catkin_LIBRARIES} iwaki queueio ${RE2_LIBRARY} ${CURSES_LIBRARY})
+target_link_libraries(iwakishi ${catkin_LIBRARIES} ${IWAKI_LIBRARY} ${QUEUEIO_LIBRARY} ${RE2_LIBRARY} ${CURSES_LIBRARY})
 add_dependencies(iwakishi iwaki_generate_messages_cpp)
 
 add_executable(console src/console.cpp)

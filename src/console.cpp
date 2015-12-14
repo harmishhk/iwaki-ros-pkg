@@ -31,7 +31,8 @@
 #include <stdlib.h>
 #include <string>
 #include <getopt.h>
-#include <ncursesw/ncurses.h> /* for getch() */
+//#include <ncursesw/ncurses.h> /* for getch() */
+#include <ncurses.h> /* for getch() */
 
 #include "ros/ros.h"
 #include "iwaki/AtomMsg.h"

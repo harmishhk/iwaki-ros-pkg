@@ -35,7 +35,8 @@
 #include <string>
 #include <csignal>
 #include <algorithm>
-#include <ncursesw/ncurses.h> /* for getch() */
+//#include <ncursesw/ncurses.h> /* for getch() */
+#include <ncurses.h> /* for getch() */
 
 #include <sys/time.h>
 #include <stdio.h>
